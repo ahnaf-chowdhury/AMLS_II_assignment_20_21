@@ -116,7 +116,7 @@ if __name__ == '__main__':
     # batched train and validation datasets:
 
     batch_size = 512
-    n_epochs = 2
+    n_epochs = 355
     embedding_dims = 128
 
     train_dataset = tf.data.Dataset.from_tensor_slices((
