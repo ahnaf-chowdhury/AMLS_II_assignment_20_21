@@ -1,6 +1,6 @@
 # Sentiment Analysis on Movie Reviews
 
-Classifies the sentiment of phrases from the Rotten Tomatoes dataset from 0 (very negative) to 5 (very positive).
+Classifies the sentiment of phrases from the Rotten Tomatoes dataset from 0 (very negative) to 4 (very positive).
 
 ## Requirements
 
