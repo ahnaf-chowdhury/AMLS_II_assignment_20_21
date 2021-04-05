@@ -4,6 +4,7 @@ import pandas as pd
 import nltk
 import numpy as np
 import seaborn as sns
+import argparse
 import matplotlib.pyplot as plt
 nltk.download('stopwords')
 from nltk.corpus import stopwords
@@ -22,7 +23,7 @@ def text_cleaning(text):
            "mightn't", "mightn", "mustn't", "mustn", "needn't", "needn", "shan't", "shan", "won't", "won"]
 
     stop_words.difference_update(neg)
-    
+
     if text:
         text = ' '.join(text.split('.'))
         text = re.sub('\/', ' ', text)
@@ -62,3 +63,10 @@ def try_mkdir(dir):
 def get_prediction(arr):
     # function holder
       return arr.argmax()
+
+def get_arg_use_pretrained():
+    # get boolean variable on whether to use a pretrained model or not.
+    # By default, a model is trained instead.
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-p", "--pretrained", type=bool, default=False, help="Whether to use a pretrained model or not. Pass 'True' to use pretrained model.")
+    return vars(ap.parse_args())['pretrained']

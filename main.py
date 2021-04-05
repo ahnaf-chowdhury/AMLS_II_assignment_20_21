@@ -5,6 +5,7 @@ import nltk
 import time
 import numpy as np
 import seaborn as sns
+import argparse
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -29,13 +30,16 @@ def get_argmax(arr):
     # returns the index of the largest number in an array
     return arr.argmax()
 
-TRAIN_MODEL = False # If true, a model is trained, and if false, a pretrained model
-                    # is loaded.
-PT_MODEL_PATH = './task/models/lstm-2-apr-b512-dropout0-2-bn-dim128-emb-untr-epochs-335-2-layer-ttv-final.h5'
-                    # path where the pretrained model is stored
-PT_MODEL_HISTORY_PATH = './task/models/history-lstm-2-apr-b512-dropout0-2-bn-dim128-emb-untr-epochs-335-2-layer-ttv-final.csv'
-
 if __name__ == '__main__':
+
+    TRAIN_MODEL = not ahnaf_nlp.get_arg_use_pretrained()
+                        # If true, a model is trained (default),
+                        # and if false, a pretrained model is loaded.
+                        # argument is parsed from the command line
+    PT_MODEL_PATH = './A/models/lstm-2-apr-b512-dropout0-2-bn-dim128-emb-untr-epochs-335-2-layer-ttv-final.h5'
+                        # path where the pretrained model is stored
+    PT_MODEL_HISTORY_PATH = './A/models/history-lstm-2-apr-b512-dropout0-2-bn-dim128-emb-untr-epochs-335-2-layer-ttv-final.csv'
+
     #-------------------------------------------------------------------------------
     # Data preprocessing
     #-------------------------------------------------------------------------------
@@ -112,7 +116,7 @@ if __name__ == '__main__':
     # batched train and validation datasets:
 
     batch_size = 512
-    n_epochs = 335
+    n_epochs = 2
     embedding_dims = 128
 
     train_dataset = tf.data.Dataset.from_tensor_slices((
